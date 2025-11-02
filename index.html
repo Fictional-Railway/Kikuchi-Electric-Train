@@ -7,21 +7,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">菊池電車</div>
-        <nav>
-            <ul>
-                <li><a href="./index.html">トップ</a></li>
-                <li><a href="#">路線情報</a></li>
-                <li><a href="#">時刻表</a></li>
-                <li><a href="#">運行情報</a></li>
-                <li><a href="#">駅情報</a></li>
-                <li><a href="#">お問い合わせ</a></li>
-            </ul>
-        </nav>
-    </header>
+<header class="navbar">
+  <div class="logo">菊池電車</div>
 
-    <main>
+  <!-- ハンバーガーボタン -->
+  <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="nav-links" id="nav-links">
+    <a href="index.html">ホーム</a>
+    <a href="route.html">路線情報</a>
+    <a href="timetable.html">時刻表</a>
+    <a href="news.html">お知らせ</a>
+    <a href="company.html">会社概要</a>
+  </nav>
+</header>
+
+<main>
         <section class="hero">
             <h1>自然と町を結ぶ、菊池電車</h1>
             <p>熊本から山鹿・菊池まで、快適な旅をお届けします。</p>
@@ -83,6 +88,30 @@
         <a class="ichiran" href="https://fictional-railway.github.io/myrailways/">架空鉄道一覧はこちらから</a>
     </footer>
 
-    <script src="./script.js"></script>
+    <script>
+// 運行情報表示サンプル
+const serviceStatus = document.getElementById('service-status');
+
+function updateServiceInfo() {
+    const today = new Date();
+    const dateStr = today.toLocaleDateString('ja-JP');
+    // ここは例：平常運転
+    const info = `<p>${dateStr} 現在、全線で平常どおり運行しています。</p>`;
+    serviceStatus.innerHTML = info;
+}
+
+// 初回表示
+updateServiceInfo();
+
+
+        const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  hamburger.classList.toggle('active');
+});
+
+    </script>
 </body>
 </html>
